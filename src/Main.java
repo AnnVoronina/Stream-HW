@@ -41,7 +41,7 @@ public class Main {
             List<Person> worker = persons.stream().filter(p -> p.getEducation().equals(Education.HIGHER) || p.getEducation().equals(Education.FURTHER)).
                     filter(p -> (p.getSex().equals(Sex.WOMAN) && p.getAge() > 18 && p.getAge() < 60) ||
                             (p.getSex().equals(Sex.MAN) && p.getAge() > 18 && p.getAge() < 65)).
-                    sorted((p1, p2) -> p1.getLastNane().compareTo(p2.getLastNane())).collect(Collectors.toList());
+                    sorted(Comparator.comparing(Person::getLastNane)).collect(Collectors.toList());
             System.out.println("количество несовершеннолетних:");
             System.out.println(countYoungerEighteen);
             System.out.println("отсортированный по фамилии список потенциально работоспособных людей с высшим образованием в выборке");
